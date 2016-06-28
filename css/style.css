@@ -3,6 +3,10 @@ ul {
 }
 .fa {
   display: inline-block;
+  padding-right: 5px;
+}
+.fa-right {
+    padding-left: 5px;
 }
 .fa-pagelines,
 .fa-spoon {
@@ -15,10 +19,21 @@ ul {
 .fa-spoon {
   padding-right: 15px;
 }
-.fa-ra,
-.fa-align-justify {
-  padding-right: 5px;
+
+.fa-right.fa-chevron-circle-right {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
+.fa-right.fa-spoon, .fa-right.fa-pagelines {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+  padding-left: 10px;
+  top: 0px;
+}
+.fa-right.fa-spoon {
+    padding-left: 15px;
+}
+
 .bg0 {
   background: #f0a0a0;
 }
@@ -29,19 +44,18 @@ ul {
 .bg2 {
   background: #6495ED;
   color: #D6BF86;
-  text-align: right;
-}
-.bg2 > ul > li > div > .fa {
-  display: none;
 }
 .bg3 {
   background: #e9ddbf;
   color: #6495ED;
-  text-align: center;
 }
-.bg3 > ul > li > div > .fa {
-  display: none;
+.layout-center {
+text-align: center;
 }
+.layout-right {
+text-align: right;
+}
+
 .font0 {
   font-family: monospace;
   font-size: 12pt;
