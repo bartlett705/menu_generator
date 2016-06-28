@@ -8,8 +8,7 @@ ul {
 .fa-right {
     padding-left: 5px;
 }
-.fa-pagelines,
-.fa-spoon {
+.fa-pagelines, .fa-spoon {
   position: relative;
   top: 7px;
   -webkit-transform: rotate(90deg);

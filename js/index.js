@@ -1,4 +1,11 @@
-var result = '';
+// Constants
+var FIRST_COURSE_MIN = 4;
+var FIRST_COURSE_RAND_RANGE = 3;
+var SECOND_COURSE_MIN = 3;
+var SECOND_COURSE_RAND_RANGE = 3;
+
+// Helpful functions
+
 function pick_a(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -16,32 +23,48 @@ function non_plural(str) {
 	return str
     }
 }
-var animals = ['Dog', "Cat", "Hare", "Crane", "Fox", "Hound", "Sheeba", "Whistle", "Wolf", "Musk Ox", "Blue Jay", "Cormorant", "Panda", "Doorknob", "Broomstick", "Knife", "Fiddle", "Jewel", "Lamp"];
+
+// Pantry
+
 var shrooms = ['porcini', 'shiitake', 'crimini', 'king trumpet', 'oyster', 'button', 'ushimeji', 'black trumpet', 'wood-ear'];
 var ingredients = ['cats', 'dogs', 'rice', 'mice', 'flowers', 'beer', get_shroom(), 'watercress', 'mugwort', 'hippies', 'salamander', 'sunchoke', 'skirt steak', 'candy-cane beets', 'tri-color carrots', 'heirloom tomatoes', 'new potatoes', 'gnocchi', 'scallions', 'cebollitas', 'pork jowl', 'guanciale', 'iberico ham', get_shroom()];
 var sauces = ['sauce', 'dip', 'ranch', 'reduction'];
 var preps = ['braised', 'grilled', 'smoked', 'baked', 'broasted', 'char-grilled', 'filet of', 'a la king', 'rockafeller', 'almandine', 'fresh off the bar-bee', 'from the farm'];
-var bullets = ['fa-align-justify', 'fa-asterisk', 'fa-chevron-circle-right', 'fa-pagelines', 'fa-ra' , 'fa-spoon'];
 
+// Layout and restaurant name options
+var bullets = ['fa-align-justify', 'fa-asterisk', 'fa-chevron-circle-right', 'fa-pagelines', 'fa-ra' , 'fa-spoon'];
 var fonts = ['font1', 'font2', 'font3'];
 var bgs = ['bg0', 'bg1', 'bg2','bg3'];
 var layouts = ['layout-left', 'layout-center', 'layout-right'];
-var layout = pick_a(layouts);
-$('body').addClass(layout);
-$('body').addClass(pick_a(bgs));
-$('body').addClass(pick_a(fonts));
+var places = ["Roadhouse", "Dive", "Hide-away", "Grub Shack", "Bistro",  "Cafe", "Diner", "Tavern", "Gastropub", "House"];
+var animals = ['Dog', "Cat", "Hare", "Crane", "Fox", "Hound", "Sheeba", "Whistle", "Wolf", "Musk Ox", "Blue Jay", "Cormorant", "Panda", "Doorknob", "Broomstick", "Knife", "Fiddle", "Jewel", "Lamp"];
+var names = [silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), "Jill's ", "Bob's ", "Dave's ", "The ", "City ", "Famous ", "That ", "Hipster ", "Artisan ", "Local " ];
 var courses = [
   ['Apps', 'Entrees'],
   ['Starters', 'Mains'],
   ['Small Bites', 'Share Plates']
 ];
+
+// Roll for font, layout, color scheme, menu section names, and restaurant name
+var layout = pick_a(layouts);  // Store this for later so we know where to insert bullets
+$('body').addClass(layout);
+$('body').addClass(pick_a(bgs));
+$('body').addClass(pick_a(fonts));
+
 var our_selection = pick_a(courses);
 $('.course1').append(our_selection[0]);
 $('.course2').append(our_selection[1]);
-var names = [silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), silly_animals(), "Jill's ", "Bob's ", "Dave's ", "The ", "City ", "Famous ", "That ", "Hipster ", "Artisan ", "Local " ];
-var places = ["Roadhouse", "Dive", "Hide-away", "Grub Shack", "Bistro",  "Cafe", "Diner", "Tavern", "Gastropub", "House"];
 $('#venue').append(pick_a(names) + pick_a(places));
 
+// Roll for size of menu and insert divs for each menu item
+var firsts = Math.floor(Math.random() * FIRST_COURSE_RAND_RANGE) + FIRST_COURSE_MIN;
+var seconds = Math.floor(Math.random() * SECOND_COURSE_RAND_RANGE) + SECOND_COURSE_MIN;
+for (var idx = 0; idx < firsts; idx++) {
+    $('#section1').append('<li><div class = "menu-item"></div></li>');
+}
+for (var idx = 0; idx < seconds; idx++) {
+    $('#section2').append('<li><div class = "menu-item"></div></li>');
+}
 $('.menu-item').each(function(index) {
   var result = '';
   prep = pick_a(preps);
