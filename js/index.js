@@ -24,7 +24,7 @@ pantry = {
   'garnish_phrases' : ['finished with ', 'topped with ', 'adorned with ', 'and ', 'and finally, ', 'garnished with ', 'set off with '],
   'garnishes' : ['a sprig of %p rosemary', 'a leaf of %p mint', '%p gold flakes', 'ground %p dried shrimp', '%p pomegranite seeds', 'candied %p walnuts', 'candied %p pecans', 'glazed %p pistachio crumble', 'house-made bacon bits', '%p picogreens', '%p femtogreens','%p puffed black rice', 'nanogreens'],
 // Layout and restaurant name options
-  'bullets' : ['fa-align-justify', 'fa-asterisk', 'fa-chevron-circle-right', 'fa-pagelines', 'fa-ra' , 'fa-spoon'],
+  'bullets' : ['fa-align-justify', 'fa-asterisk', 'fa-chevron-circle-right', 'fa-pagelines', 'fa-ra' , 'fa-spoon', 'fa-spoon', 'fa-spoon', 'fa-pagelines', 'fa-pagelines', 'fa-spoon'],
   'fonts' : ['font1', 'font2', 'font3'],
   'bgs' : ['bg0', 'bg1', 'bg2','bg3'],
   'layouts' : ['layout-left', 'layout-center', 'layout-right'],
@@ -44,7 +44,6 @@ function pick_a(category) {
   var item = pantry[category][Math.floor(Math.random() * pantry[category].length)];
   if (pantry[category].length > 1) {
     pantry[category] = pantry[category].slice(0, pantry[category].indexOf(item)).concat(pantry[category].slice(pantry[category].indexOf(item) + 1));
-    console.log('Popping ' + item + ": " + pantry[category]);
   }
   return item;
 }
@@ -114,21 +113,21 @@ function compose_dish($_this, course) {
     console.log(result);
   }
   var dice = Math.random();
-  if ((dice > 0.7) || (dish_length <= 1)){
+  if ((dice > 0.6) || (dish_length <= 1)){
     result = result.concat('with ' + pick_a('starches')).replace('%p', modded(''));
     result = result.concat(' and ' + non_plural(modded(pick_a('ingredients'))) + ' ' + pick_a('sauces'));
   }
-  else if (dice > 0.5) {
+  else if (dice > 0.4) {
         result = result.concat('with ' + pick_a('starches')).replace('%p', modded(''));
       }
-  else if (dice > 0.25) {
+  else if (dice > 0.2) {
         result = result.concat(' with ' + non_plural(modded(pick_a('ingredients'))) + ' ' + pick_a('sauces'));
   }
   // Check for a trailing comma in the case where there are no sauces, starches 
   if (result.slice(-2) === ', ') {
     result = result.slice(0,-2);
   }
-  if (Math.random() > 0.7) {
+  if (Math.random() > 0.6) {
   result = result.concat(', ' + pick_a('garnish_phrases') + pick_a('garnishes')).replace('%p', modded(''));
 }
 
