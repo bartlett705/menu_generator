@@ -1,0 +1,163 @@
+html,
+body {
+  height: 100vh;
+  width: 98%;
+}
+
+body {
+  background-color: #2f2f2f;
+  font-family: 'Roboto', fixed-width;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+a, a:visited {
+  color: cornflowerblue
+}
+
+h2,
+h1 {
+  margin: 0.5rem;
+}
+
+h6 {
+  margin: 0.25rem;
+}
+
+main {
+  height: 95vh;
+}
+
+main,
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// main,
+// header {
+//   padding-bottom: 2rem;
+// }
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+footer {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding-bottom: 1rem;
+  animation: slideleft 3s ease-out 0s running;
+}
+
+@keyframes slideleft {
+  from {
+    transform: translateX(18rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+label {
+  display: flex;
+  justify-content: flex-end;
+}
+
+input {
+  margin-left: 0.5rem;
+  width: 10rem;
+  border-radius: 0.1rem;
+  border: 0;
+}
+
+input:focus {
+  border: 2px solid rgb(69, 1, 124);
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  background-color: cornflowerblue;
+  border-radius: 0.1rem;
+  border: 0;
+  height: 1.5rem;
+}
+
+.errors {
+  background-color: lightslategray;
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.item-list__list-item {
+  border-bottom: 1px solid #6f6f6f;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // &:nth-last-of-type(1) {
+  //   padding-bottom: 0.5rem;
+  // }
+
+  & span {
+    width: 10rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  & button {
+    background-color: transparent;
+    font-weight: 700;
+    color: red;
+    cursor: pointer;
+  }
+}
+
+.item-list__container {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 1px dotted #6f6f6f;
+  display: inline-block;
+  vertical-align: top;
+
+  & form {
+    border-top: 1px double #6f6f6f;
+    padding-top: 0.5rem;
+    padding-bottom: 0.25rem;
+    margin-block-end: 0;
+  }
+}
+
+.item-list__header {
+  border-bottom: 1px dotted #6f6f6f
+}
+
+.ingredient-list {
+  // flex-direction: row;
+  // display: flex;
+}
+
+.ingredient-form {
+  display: inherit;
+  flex-direction: column;
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+  }
+}
