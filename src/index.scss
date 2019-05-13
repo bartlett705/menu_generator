@@ -140,6 +140,14 @@ button {
     padding-top: 0.5rem;
     padding-bottom: 0.25rem;
     margin-block-end: 0;
+
+    & button {
+      // color: green;
+      font-weight: 700;
+      background-color: green;
+      // border: 1px solid green;
+      margin-left: 0.25rem;
+    }
   }
 }
 

@@ -13,7 +13,10 @@ interface State {
 export class MenuPage extends React.Component<RouterProps> {
   public state: State = {
     inputError: false,
-    ...mockState(),
+    proteins: [],
+    sauces: [],
+    starches: [],
+    ...JSON.parse(localStorage.getItem('pantry')),
   }
 
   public render() {
@@ -23,17 +26,17 @@ export class MenuPage extends React.Component<RouterProps> {
         <ItemList
           label="Proteins"
           items={this.state.proteins}
-          onChange={(proteins) => this.setState({ proteins })}
+          onChange={(proteins) => this.setState({ proteins }, this.persist)}
         />
         <ItemList
           label="Starches"
           items={this.state.starches}
-          onChange={(starches) => this.setState({ starches })}
+          onChange={(starches) => this.setState({ starches }, this.persist)}
         />
         <ItemList
           label="Sauces"
           items={this.state.sauces}
-          onChange={(sauces) => this.setState({ sauces })}
+          onChange={(sauces) => this.setState({ sauces }, this.persist)}
         />
         </div>
         <div className="ingredient-form__controls">
@@ -48,6 +51,10 @@ export class MenuPage extends React.Component<RouterProps> {
     )
   }
 
+  private persist() {
+    const { proteins, starches, sauces } = this.state
+    localStorage.setItem('pantry', JSON.stringify({ proteins, starches, sauces }))
+  }
   private genMenu = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     this.setState({ inputError: true })
